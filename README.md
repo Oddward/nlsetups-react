@@ -1,8 +1,9 @@
-# React Hyacin Player
+# NLSetups
 
-Slick music & audio player designed for a pleasant listening experience. Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Minimalistic & simple platform revolving around Android home screen customization - share &  browse nice launcher setups. 
+Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-> Refer to [Dev-notes folder](https://github.com/Oddward/react-music/tree/master/dev-notes) for concept
+_Refer to [Dev-notes folder](https://github.com/Oddward/nlsetups-react/tree/main/dev-notes) for concept_
 
 ## Run locally
 
@@ -10,7 +11,7 @@ Slick music & audio player designed for a pleasant listening experience. Bootstr
 
 Open terminal/Git Bash to intended root directory & clone
 ```
-> git clone https://github.com/Oddward/react-music.git
+> git clone https://github.com/Oddward/nlsetups-react.git
 ```
 
 ### Install dependencies
@@ -22,8 +23,6 @@ Open terminal to cloned directory & install
 ```
 
 ### `npm start` | `yarn start`
-
-> I had a better time with npm
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
