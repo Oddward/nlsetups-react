@@ -5,6 +5,8 @@ import Layout from './pages/Layout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
+import NoPage from './pages/NoPage';
+import Post from './pages/Post';
 
 /* Constants */ 
 
@@ -14,8 +16,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <Layout /> }>
-          <Route path="/home" element={ <Home /> } />
+          <Route index element={ <Home /> } />
           <Route path="/profile" element={ <Profile /> } />
+          <Route path="/post" element={ <Post /> } />
+          <Route path="*" element={ <NoPage /> } />
         </Route>
       </Routes>
     </BrowserRouter>

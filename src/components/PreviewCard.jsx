@@ -1,6 +1,6 @@
 import { BookmarkIcon as BookmarkIconOutline } from '@heroicons/react/outline'
 import { BookmarkIcon as BookmarkIconSolid } from '@heroicons/react/solid'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -57,20 +57,22 @@ const CardContainer = styled.div`
 `
 
 function PreviewCard( props ) {
-    const { saved, setSaved } = useState( props.saved )
+    // const { saved, setSaved } = useState( false )
     // const { src } = useState( '' )
     const icon = () => {
         // ...check authentication first
-        if ( saved ) {
-            return <BookmarkIconSolid onClick={ setSaved } />
+        if ( props.saved ) {
+            return <BookmarkIconSolid />
         } else {
-            return <BookmarkIconOutline onClick={ setSaved } />
+            return <BookmarkIconOutline />
         }
     }
 
     return(
         <CardContainer>
-            <Thumbnail src={ props.src } alt="Post screenshot thumbnail" />
+            <Link to="/post">
+                <Thumbnail src={ props.src } alt="Post screenshot thumbnail" />
+            </Link>
             <CardBottom>
                 <Link to="/profile">
                     <UserTag>{ props.username }</UserTag>

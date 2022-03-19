@@ -7,6 +7,10 @@ import {
 } from "@heroicons/react/outline";
 import PostNavbar from "../components/PostNavbar";
 
+const StyledContainer = styled.div`
+    padding-bottom: 3rem;
+`
+
 const IconLink = styled.span`
     fill: navy;
     color: navy;
@@ -14,7 +18,7 @@ const IconLink = styled.span`
     height: 2rem;
     margin: 0 .5rem;
     display: inline-block;
-    opacity: 70;
+    opacity: .7;
 
     & a:visited, & a:active {
         color: navy;
@@ -23,7 +27,7 @@ const IconLink = styled.span`
     &:hover, &:focused {
         color: #222;
         fill: #222;
-        opacity: 100;
+        opacity: 1;
     }
 `
 
@@ -53,10 +57,10 @@ const Layout = () => {
             </li>
         </Navbar>
 
-        <div className="container">
+        <StyledContainer className="container">
             <PostNavbar />
             <Outlet />
-        </div>
+        </StyledContainer>
 
         <Footer>
             <div>

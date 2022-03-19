@@ -24,7 +24,7 @@ function Navbar( props ) {
 
     return(
         <Nav>
-            <Link to="/home">
+            <Link to="/">
                 <Brandmark>NLSetups</Brandmark>
             </Link>
             <Ul>

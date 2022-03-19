@@ -91,5 +91,5 @@ Global:
 ## Web technologies
 
 - react
-- tailwindcss with styled components ( ? )
+- styled components
 - redux ( ? )

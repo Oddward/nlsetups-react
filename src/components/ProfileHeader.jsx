@@ -50,7 +50,7 @@ function ProfileHeader( props ) {
     return(
         <ContainerDiv color={ props.color }>
             <HorizontalCenteredDiv>
-                <Avatar src="./avatars/pfp1.jpg"></Avatar>
+                <Avatar src="./avatars/pfp1.jpg" />
                 <div style={{display:'flex', flexDirection:'column'}}>
                     <H2 color={ props.color }>Oddward G</H2>
                     <P>@oddward</P>
