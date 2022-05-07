@@ -11,6 +11,7 @@ const StyledButton = styled.button`
     font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: .5rem;
     cursor: pointer;
 
@@ -36,4 +37,4 @@ function Button( props ) {
     )
 }
 
-export default Button
+export default Button;

@@ -8,11 +8,11 @@ const List = styled.ul`
 `
 
 function TabsList( props ) {
-
+    
     return(
-        <>
-        { props.children }
-        </>
+        <List>
+            { props.children }
+        </List>
     )
 }
 

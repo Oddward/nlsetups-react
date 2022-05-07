@@ -1,11 +1,12 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { auth } from './Firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import styled from "styled-components";
 import { 
     PlusCircleIcon, 
     UserIcon 
 } from "@heroicons/react/outline";
-import PostNavbar from "../components/PostNavbar";
 
 const StyledContainer = styled.div`
     padding-bottom: 3rem;
@@ -31,6 +32,17 @@ const IconLink = styled.span`
     }
 `
 
+const UlDropdown = styled.ul`
+    position: absolute;
+    background-color: white;
+    box-shadow: 2px 2px 4px 2px #0001;
+    list-style: none;
+
+    & li {
+        width: 100%;
+    }
+`
+
 const Footer = styled.footer`
     background: black;
     color: rgba( 255, 255, 255, .86 );
@@ -42,6 +54,12 @@ const Footer = styled.footer`
 `
 
 const Layout = () => {
+    const [ user ] = useAuthState( auth )
+
+    const signOut = () => {
+        auth.signOut();
+    };
+
     return (
         <>
         <Navbar>
@@ -50,15 +68,34 @@ const Layout = () => {
                 <IconLink><PlusCircleIcon /></IconLink>
             </Link>
             </li>
-            <li>
-            <Link to="/profile">
-                <IconLink><UserIcon /></IconLink>
-            </Link>
+            <li style={{position: 'relative'}}>
+                <button>
+                    <IconLink><UserIcon /></IconLink>
+                </button>
+                <UlDropdown>
+                    { user ? 
+                    (<>
+                        <Link to="/profile"><li>
+                            Profile
+                            </li></Link>
+                        <Link to="/settings"><li>
+                            Settings
+                            </li></Link>
+                        <li onClick={ signOut }>
+                            Signout
+                        </li>
+                    </>) :
+                    (<>
+                        <Link to="/signin"><li>
+                            Signin
+                        </li></Link>
+                    </>) }
+                </UlDropdown>
+            
             </li>
         </Navbar>
 
         <StyledContainer className="container">
-            <PostNavbar />
             <Outlet />
         </StyledContainer>
 

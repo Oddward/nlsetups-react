@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styled from "styled-components"
+import PostNavbar from "../components/PostNavbar";
 import Feed from "../components/Feed"
 import TabHeader from "../components/leaf-components/TabHeader"
 // import TabsList from "../components/TabList"
@@ -27,6 +28,7 @@ const Profile = () => {
 
     return(
         <>
+        <PostNavbar />
         <ProfileHeader color="orange" />
 
         <TabsContainer>

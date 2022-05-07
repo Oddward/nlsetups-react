@@ -1,5 +1,6 @@
 import { BookmarkIcon, ChatIcon } from "@heroicons/react/solid"
 import styled from "styled-components"
+import PostNavbar from "../components/PostNavbar";
 import Comment from "../components/Comment"
 import Avatar from "../components/leaf-components/Avatar"
 
@@ -105,6 +106,7 @@ const Post = () => {
 
     return(
         <>
+            <PostNavbar />
             <PostSection>
                 { img }
                 <div className="container" style={{height: h}}>

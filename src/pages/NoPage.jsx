@@ -1,9 +1,10 @@
-
+import PostNavbar from "../components/PostNavbar";
 
 const NoPage = () => {
     return(
         <>
-            No Page
+        <PostNavbar />
+        No Page
         </>
     )
 }
