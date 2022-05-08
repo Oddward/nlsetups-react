@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { auth } from './Firebase';
+import { auth } from '../Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import styled from "styled-components";
 import { 
