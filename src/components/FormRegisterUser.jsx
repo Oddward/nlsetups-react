@@ -3,6 +3,8 @@ import { useState } from 'react';
 import styled from 'styled-components'
 import FormInput from './leaf-components/FormInput';
 import Button from './leaf-components/Button';
+import { auth } from '../Firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Form = styled.form`
     display: flex;
@@ -25,11 +27,25 @@ const Form = styled.form`
 
 
 function FormRegisterUser( { registerUser } ) {
-    const [ input, setInput ] = useState( [] )
+    const [ user, setUser ] = useState({ email: "e", password: "p"} );
+    const handleChange = (event) => {
+        setUser({...user, [event.target.name]: event.target.value});
+    };
+    
+    const handleSubmit = (event) => {
+        event.preventDefault()
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        registerUser( input )
+        createUserWithEmailAndPassword(auth, user.email, user.password)
+            .then((userCredential) => {
+                //Sign in
+                const user = userCredential.user;
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            })
+        
+        console.log(user.email, user.password)
     }
 
     return ( 
@@ -37,26 +53,17 @@ function FormRegisterUser( { registerUser } ) {
             <h1>Signup</h1>
 
             <div>
-                <label htmlFor="Email">Email address</label>
-                <FormInput type="email" name="Email" />
+                <label htmlFor="email">Email address</label>
+                <input type="email" name="email" onChange={handleChange}/>
             </div>
 
             <div>
-                <label htmlFor="Name">Display name</label>
-                <FormInput type="text" name="Name" placeholder="'John son of Jane'" />
-            </div>
-
-            <div>
-                <label htmlFor="Username">Username</label>
-                <FormInput type="text" name="Username" placeholder="'@jdoe'" />
-            </div>
-
-            <div>
-                <label htmlFor="Password">Password</label>
-                <FormInput type="password" name="Password" />
+                <label htmlFor="password">Password</label>
+                <input type="password" name="password" onChange={handleChange}/>
             </div>
 
             <Button type="submit">Submit</Button>
+            {user.email}
         </Form>
     );
 }
