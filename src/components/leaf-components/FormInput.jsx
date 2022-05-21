@@ -1,69 +1,85 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const OutlinedInput = styled.input`
-    display: inline-block;
-    border-radius: .5rem;
-    border: 2px solid rgb( 0 0 0 / 25% );
-    padding: 1rem;
-    transition: all 300ms ease;
+const OutlinedInput = styled.div`
+    & input {
+        display: inline-block;
+        border-radius: .5rem;
+        border: 2px solid rgb( 0 0 0 / 25% );
+        padding: 1rem;
+        transition: all 300ms ease;
+    }
 
-    &:hover {
+    & input:hover {
         border-color: rgb( 0 0 0 / 35% );
         border-radius: .25rem;
     }
-    &:focused, &:active {
+    & input:focused, & input:active {
         border-color: rgb( 0 0 0 / 67% );
         border-radius: .25rem;
     }
 `
 
-const TextBox = styled(OutlinedInput).attrs( props => ({
-    type: 'text',
-}))`
+const TextBox = styled(OutlinedInput)`
     
 `
 
-const TextArea = styled(OutlinedInput).attrs( props => ({
-    type: 'textarea',
-}))`
+const TextArea = styled(OutlinedInput)`
     height: 100%;
 `
 
-const EmailInput = styled(OutlinedInput).attrs( props => ({
-    type: 'email',
-    placeholder: 'example@mail.com',
-}))`
+const EmailInput = styled(OutlinedInput)`
 
 `
 
-const PasswordInput = styled(OutlinedInput).attrs( props => ({
-    type: 'password',
-}))`
+const PasswordInput = styled(OutlinedInput)`
 
 `
 
-const FileInput = styled.input.attrs( props => ({
-    type: 'file',
-}))`
+const FileInput = styled.input`
 
 `
 
-function FormInput( props ) {
+function FormInput( { value = "", onChange, placeholder, name, type } ) {
     let output = ""
+    // const [ input, setInput ] = useState( value )
 
-    switch ( props.type ) {
+    // const handleChange = (e) => {
+    //     setInput(e.target.value);
+    //     if (typeof onChange === "function") {
+    //         onChange(e.target.value);
+    //     }
+    // }
+    
+    switch ( type ) {
         case 'text':
-            output = <TextBox type="text" placeholder={ props.placeholder } />
-            break;
+            return(
+                <TextBox>
+                    <input type="text" name={ name } placeholder={ placeholder } onChange={ onChange } />
+                </TextBox>
+            )
+            // break;
         case 'textarea':
-            output = <TextArea type="textarea" placeholder={ props.placeholder } />
-            break;
+            return(
+                <TextArea>
+                    <input type="textarea" name={ name } placeholder={ placeholder } />
+                </TextArea>
+            )
+            // break;
         case 'email':
-            output = <EmailInput type="email" placeholder={ props.placeholder } />
-            break;
+            return(
+                <EmailInput>
+                    <input type="email" name={ name } placeholder={ placeholder } onChange={ onChange } />
+                </EmailInput>
+            )
+            // break;
         case 'password':
-            output = <PasswordInput type="password" placeholder={ props.placeholder } />
-            break;
+            return(
+                <PasswordInput>
+                    <input type="password" name={ name } placeholder={ placeholder } onChange={ onChange }  />
+                </PasswordInput>
+            )
+            // break;
     
         default:
             break;

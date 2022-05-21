@@ -54,16 +54,17 @@ function FormRegisterUser( { registerUser } ) {
 
             <div>
                 <label htmlFor="email">Email address</label>
-                <input type="email" name="email" onChange={handleChange}/>
+                <FormInput type="email" name="email" onChange={handleChange}/>
             </div>
 
             <div>
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" onChange={handleChange}/>
+                <FormInput type="password" name="password" onChange={handleChange}/>
             </div>
 
             <Button type="submit">Submit</Button>
             {user.email}
+            {user.password}
         </Form>
     );
 }
